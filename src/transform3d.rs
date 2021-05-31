@@ -444,6 +444,7 @@ where
     /// Create a 2d skew transform.
     ///
     /// See <https://drafts.csswg.org/css-transforms/#funcdef-skew>
+    #[cfg(any(feature = "std", feature = "libm"))]
     pub fn skew(alpha: Angle<T>, beta: Angle<T>) -> Self
     where
         T: Trig,
@@ -568,6 +569,7 @@ where
 }
 
 /// Methods for creating and combining rotation transformations
+#[cfg(any(feature = "std", feature = "libm"))]
 impl<T, Src, Dst> Transform3D<T, Src, Dst>
 where
     T: Copy + Add<Output = T> + Sub<Output = T> + Mul<Output = T> + Div<Output = T> + Zero + One + Trig,
